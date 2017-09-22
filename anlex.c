@@ -23,9 +23,9 @@ void sigLex(){
     char c=0; // Un caracter.
     int acepto=0; // Estado de aceptacion de un LITERAL_NUM.
     int estado=0; // Es tado de un LITERAL_NUM.
-    char msg[41];
+    char msg[41]; 
     entrada e; // La entrada.
-    //t.pe=(entrada*)malloc(sizeof(entrada));
+
     while((c=fgetc(archivo))!=EOF){
 		
 	if (c==' ' || c=='\t'){
