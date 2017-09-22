@@ -6,6 +6,7 @@ Estudiante: Jacqueline Gill.
 Turno: Noche.
 
 Como es un archivo en C para compilar en linux es el siguiente comando:
+
 gcc anlex.c tablaSimbolos.c -o anlex
 
 Y para ejecutar:
