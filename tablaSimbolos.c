@@ -18,12 +18,12 @@ int h(const char *k, int m){ // K es el puntero id en anlex.c
     return h%m;
 }
 
-// Inicia la tabla de simbolos con el estado -1.
+// Inicia la tabla de simbolos.
 void initTabla(){	
     int i=0;
     tabla=(entrada*)malloc(tamTabla*sizeof(entrada));
     for(i=0;i<tamTabla;i++){
-        strcpy(tabla[i].compLex,"-1");
+        strcpy(tabla[i].compLex,"&&");
     }
 }
 
@@ -50,7 +50,7 @@ void rehash(){
     tamTabla=siguiente_primo(2*tamTabla);
     initTabla();
     for (i=0;i<tamTabla/2;i++){
-	if(strcmp(vieja[i].compLex,"-1")!=0)
+	if(strcmp(vieja[i].compLex,"&&")!=0)
             insertar(vieja[i]);
 	}		
     free(vieja);
@@ -62,8 +62,8 @@ void insertar(entrada e){
     if (++elems>=tamTabla/2)
 	rehash();
     pos=h(e.lexema,tamTabla);
-    while (strcmp(tabla[pos].compLex,"-1")!=0){ //tabla[pos].compLex!="-1"
-        // aqui busca una posicion con -1 en la TS para agregar un elemento nuevo
+    while (strcmp(tabla[pos].compLex,"&&")!=0){ 
+        // aqui busca una posicion con && en la TS para agregar un elemento nuevo
 	pos++;
 	if (pos==tamTabla)
             pos=0;
@@ -76,7 +76,7 @@ void insertar(entrada e){
 entrada* buscar(const char *clave){
     int pos;
     pos=h(clave,tamTabla);
-    while(strcmp(tabla[pos].compLex,"-1")!=0 && strcmp(tabla[pos].lexema,clave)!=0 ){ //VEEEEER
+    while(strcmp(tabla[pos].compLex,"&&")!=0 && strcmp(tabla[pos].lexema,clave)!=0 ){
 	pos++;
 	if (pos==tamTabla)
             pos=0;
