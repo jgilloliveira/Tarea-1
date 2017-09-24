@@ -56,7 +56,7 @@ void sigLex(){
             // Aqui basicamente se extrae de la TS una entrada.
             t.pe=buscar(id); // devuelve puntero entrada que encontró en la TS.
             strcpy(t.compLex,t.pe->compLex);
-            if (strcmp(t.pe->compLex,"-1")==0){ // como no encontró la entrada en la TS es una cadena.
+            if (strcmp(t.pe->compLex,"&&")==0){ // como no encontró la entrada en la TS es una cadena.
                 strcpy(e.lexema,id); // Guarda el lexema en entrada.
                 strcpy(e.compLex,"LITERAL_CADENA"); // Guarda el componente lexico
 		insertar(e); // A partir de aqui lo carga en la TS.
@@ -158,7 +158,7 @@ void sigLex(){
 			id[++i]='\0';
 			acepto=1;
 			t.pe=buscar(id);
-			if (strcmp(t.pe->compLex,"-1")==0){ // Si no encuentra el número lo agrega a la TS.
+			if (strcmp(t.pe->compLex,"&&")==0){ // Si no encuentra el número lo agrega a la TS.
                             strcpy(e.lexema,id);
                             strcpy(e.compLex,"LITERAL_NUM");
                             insertar(e);
@@ -233,7 +233,7 @@ void sigLex(){
 		c=0;
             t.pe=buscar(id);
             strcpy(t.compLex,t.pe->compLex);
-            if (strcmp(t.pe->compLex,"-1")==0){
+            if (strcmp(t.pe->compLex,"&&")==0){
 		strcpy(e.lexema,id);
                 strcpy(e.compLex,"LITERAL_CADENA");
                 insertar(e);
